@@ -1,17 +1,18 @@
 {
   "name": "git-npm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "mejdi OURIR",
   "license": "ISC",
   "dependencies": {
     "minimist": "^1.2.0",
     "mout": "^0.11.1",
     "rimraf": "^2.4.3",
     "uclass": "^2.0.7"
-  }
+  },
+  "bin": "bin/git-npm"
 }
