@@ -1,0 +1,23 @@
+
+var forEach = require('mout/array/forEach');
+var fs      = require('fs');
+var path    = require('path');
+var gitmodule = require('../');
+
+var argv = require('minimist')(process.argv.slice(2));
+var root_dir = process.cwd();
+
+
+try{
+    var stats = fs.statSync('node_modules');
+    if (!stats.isDirectory()) {
+      fs.mkdirSync('node_modules')
+    }
+}catch (e) {
+  fs.mkdirSync('node_modules')
+}
+
+forEach(argv._, function(module_name){
+  var git_module = new gitmodule(module_name);
+  git_module.init();
+})
