@@ -62,8 +62,11 @@ module.exports = new Class({
     this.getPackage(function(err , package){
       if(err)
         return console.log("error on get package " , err);
-      PackageRepo = package.repository.url;
-      self.clone(PackageRepo , function(err , data){
+      if(package.repository.type !== "git")
+      	return console.log("Error : %s module don't have git repo ");
+      var packageRepo = package.repository.url.split('+');
+      packageRepo = packageRepo[packageRepo.length - 1];
+      self.clone(packageRepo , function(err , data){
         if(err)
           return console.log("error on clone " , err);
         self.npmInstall();

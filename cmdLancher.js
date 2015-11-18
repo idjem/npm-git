@@ -35,8 +35,8 @@ module.exports = new Class({
       });
 
 
-      spawned.stdout.on('data', function (buffer) { stdOut.push(buffer); });
       spawned.stdout.pipe(process.stdout);
+      spawned.stdout.on('data', function (buffer) { stdOut.push(buffer); });
       spawned.stderr.on('data', function (buffer) { stdErr.push(buffer); });
 
       spawned.on('close', function (exitCode, exitSignal) {
